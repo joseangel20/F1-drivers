@@ -1,12 +1,16 @@
 const axios = require("axios");
 const { Driver, Team } = require("../db");
-const { Op, EmptyResultError } = require("sequelize");
+const { Op } = require("sequelize");
 
 const errorMessaage = "El conductor de coche no se encuentra";
 
-const postDriverController = async (objDriver, team) => {
+const postDriverController = async (objDriver, teams) => {
   const driver = await Driver.create(objDriver);
-  driver.addTeams(team);
+  if (Array.isArray(teams)) {
+    teams.forEach((team) => {
+      driver.addTeams(team);
+    });
+  } else driver.addTeams(teams);
 
   return driver;
 };
@@ -25,15 +29,16 @@ const getDriversNamesController = async (query) => {
   const driversDb = await Driver.findAll({
     where: {
       name: {
-        [Op.iLike]: query.name,
+        [Op.iLike]: nameQuery+"%",
       },
     },
+    include:Team
   });
-
-  const drivers = [...driversDb, ...apiDriversDb];
+  
+  const drivers = [...apiDriversDb,...driversDb];
 
   if (drivers.length == 0)
-    throw new EmptyResultError(
+    throw new Error(
       `No se encontrarón conductores llamado [${query.name}]`
     );
 
@@ -49,10 +54,10 @@ const getDriverIdController = async (idDriver) => {
       const apiDriversDb = await axios(
         `http://localhost:5000/drivers/${idDriver}`
       );
-      return apiDriversDb.data;
+      return [apiDriversDb.data];
     }
   } catch (error) {
-    throw new EmptyResultError(errorMessaage);
+    throw new Error(errorMessaage);
   }
 
   const driverDb = await Driver.findOne({
@@ -60,13 +65,13 @@ const getDriverIdController = async (idDriver) => {
     include: Team,
   });
 
-  if (!driverDb) throw new EmptyResultError(errorMessaage);
-  return driverDb;
+  if (!driverDb) throw new Error(errorMessaage);
+  return [driverDb];
 };
 
 const getDriversController = async () => {
   const apiDriversDb = await axios("http://localhost:5000/drivers");
-  const driversDb = await Driver.findAll();
+  const driversDb = await Driver.findAll({ include: "Teams" });
   if (driversDb.length > 0) return [...apiDriversDb.data, ...driversDb];
   return apiDriversDb.data;
 };

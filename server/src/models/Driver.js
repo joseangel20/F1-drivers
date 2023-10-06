@@ -8,10 +8,10 @@ module.exports = (sequelize) => {
     {
       name: { type: DataTypes.STRING, allowNull: false },
       lastName: { type: DataTypes.STRING, allowNull: false },
-      descripcion: { type: DataTypes.STRING, allowNull: false },
+      description: { type: DataTypes.STRING, allowNull: false },
       image: { type: DataTypes.STRING, allowNull: false },
-      nacionalidad: { type: DataTypes.STRING, allowNull: false },
-      birth: { type: DataTypes.DATE, allowNull: false },
+      nationality: { type: DataTypes.STRING, allowNull: false },
+      dob: { type: DataTypes.DATE, allowNull: false },
     },
     { timestamps: false }
   );

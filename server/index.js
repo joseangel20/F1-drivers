@@ -5,9 +5,13 @@ const { conn } = require("./src/db.js");
 const PORT = 3001;
 
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
+    // Se crea una estructura Set para almacenar los nombres de los teams
+    // sin duplicados
     const teams = new Set();
+
+    //consulta a la api de drivers
     axios("http://localhost:5000/drivers").then(({ data }) => {
       data.forEach((driver) => {
         if (driver.teams !== undefined) {
@@ -21,9 +25,9 @@ conn
         }
       });
 
-      teams.forEach(name=>{
-        Team.create({name})
-      })
+      teams.forEach((name) => {
+        Team.create({ name });
+      });
     });
 
     server.listen(PORT, () => {
