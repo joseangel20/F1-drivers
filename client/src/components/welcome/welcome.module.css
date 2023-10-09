@@ -1,0 +1,269 @@
+/* color primario cyan #1bdd89 and yellow #ef950e;*/
+
+:root {
+  --color-primary: #ef950e; /* Definición de una variable CSS */
+}
+
+.welcome {
+  background-image: url(/src/assets/backgroundF1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: center center;
+  height: 619px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  animation: font 3s forwards;
+}
+
+@keyframes font {
+  0% {
+    font-size: 0em;
+  }
+  100% {
+    font-size: 2.8em;
+  }
+}
+
+.mensaje {
+  background-color: black;
+  margin: auto;
+  padding: 0.6em;
+  width: 0;
+  height: 150px;
+  overflow-wrap: break-word;
+  border-radius: 0 0 20px 20px;
+  animation: mensaje 2s forwards;
+}
+
+@keyframes mensaje {
+  0% {
+    box-shadow: 2px 0px 5px white;
+    width: 0px;
+    opacity: 0;
+  }
+  25% {
+    box-shadow: 2px 2px 5px white;
+  }
+  75% {
+    box-shadow: -1px -1px 3px white;
+  }
+  100% {
+    box-shadow: 0px 0px 2px white;
+    width: 70%;
+    opacity: 0.9;
+    /* opacity: 0.95; para otro fondo */
+  }
+}
+
+.welcome h1,
+p {
+  text-shadow: rgb(255 255 255 / 70%) 0em 0em 1em;
+}
+
+.welcome .first {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  animation: textUno 3s 3s forwards;
+}
+
+@keyframes textUno {
+  0% {
+    opacity: 1;
+    right: 650px;
+    visibility: visible;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    color: var(--color-primary);
+    right: -5px;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.welcome .second {
+  position: relative;
+  opacity: 0;
+  animation: textDos 3s 6s forwards;
+}
+
+@keyframes textDos {
+  0% {
+    opacity: 1;
+    right: 650px;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    color: var(--color-primary);
+    right: -5px;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.welcome button {
+  visibility: hidden;
+  margin-top: 50px;
+  padding: 0.2em;
+  border-radius: 0.4em;
+  border: none;
+  box-shadow: 0px 0px 4px 0px #ffffff40;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  animation: boton 1s 9s forwards;
+}
+
+@keyframes boton {
+  0% {
+    width: 0px;
+    font-size: 0em;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    width: 22%;
+    font-size: 0.5em;
+  }
+}
+
+/* 1060 */
+@media (max-width: 1060px) {
+  .mensaje {
+    font-size: 0.8em;
+    height: 120px;
+  }
+  .welcome button {
+    margin-top: 30px;
+    padding: 0.15em;
+  }
+
+  @keyframes mensaje {
+    
+    100% {
+      box-shadow: 0px 0px 2px white;
+      width: 70%;
+      opacity: 0.95;
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+
+
+  @keyframes textUno {
+    0% {
+      opacity: 1;
+      right: 400px;
+      visibility: visible;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      color: var(--color-primary);
+      right: -4px;
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  @keyframes textDos {
+    0% {
+      opacity: 1;
+      right: 400px;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      color: var(--color-primary);
+      right: -5px;
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+
+/* 300px  */
+@media (max-width: 600px) {
+  .mensaje {
+    font-size: 0.45em;
+    animation: mensaje 5s forwards;
+    height: 100px;
+  }
+  .welcome button {
+    margin-top: 30px;
+    padding: 0.15em;
+    animation: boton 2s 8s forwards;
+  }
+  @keyframes mensaje {
+    0% {
+      box-shadow: 2px 0px 5px white;
+      width: 0px;
+      opacity: 0;
+    }
+    25% {
+      box-shadow: 2px 2px 5px white;
+    }
+    75% {
+      box-shadow: -1px -1px 3px white;
+    }
+    100% {
+      box-shadow: 0px 0px 2px white;
+      width: 70%;
+      opacity: 0.95;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome .first {
+    animation: textUno 2s 4s forwards;
+  }
+
+  @keyframes textUno {
+    0% {
+      opacity: 1;
+      right: 200px;
+      visibility: visible;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      color: var(--color-primary);
+      right: -5px;
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  .welcome .second {
+    animation: textDos 2s 6s forwards;
+  }
+
+  @keyframes textDos {
+    0% {
+      opacity: 1;
+      right: 200px;
+    }
+
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      color: var(--color-primary);
+      right: -5px;
+      opacity: 0;
+      display: none;
+    }
+  }
+}

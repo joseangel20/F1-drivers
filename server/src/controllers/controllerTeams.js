@@ -1,4 +1,4 @@
-const { Team } = require("../../db");
+const { Team } = require("../db");
 
 const getTeamsController = async () => {
   const teams = await Team.findAll();
