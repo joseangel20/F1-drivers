@@ -1,61 +1,59 @@
 :root {
-  --color-primary: white;
+  --color-primary: #e18508;
   --bgColor-primary: var(--color-primary);
   --font: 1em;
 }
 
-.contents {
+.contents{
   display: flex;
   flex-direction: column;
   background-color: black;
   width: 100%;
   margin: auto;
   padding: 0 0 0 10px;
-  color: var(--color-primary);
-  background-image: url("../../assets/backgroundF1.jpg");
-  background-position: center center;
+  color: white;
+  background-image: url("/src/assets/backgroundF1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center center;
   font-size: var(--font);
   box-sizing: border-box;
+  height: auto;
 }
-
-.header {
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: -70px;
+.header{
+  /* text-align: center; */
+  margin-top: 5px;
   font-size: 2em;
 }
-
 .contentsBody {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 45px;
   gap: 6%;
+  animation: altura 1s forwards;
 }
 
 .sideOptions {
   width: 20%;
   background-color: rgb(212, 124, 0);
-  border-radius: 20px;
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 25px;
   height: 400px;
   box-sizing: border-box;
   position: fixed;
+  box-shadow: inset 0px 0px 10px -3px white;
 }
+
 .sideCards {
-  margin-left: 25%;
-  background-color: rgb(212, 124, 0);
+  margin-left: 30%;
   display: flex;
   flex-direction: row;
-  width: 65%;
+  max-width: 59%;
+  /* width: 546px; */
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 20px;
-  font-size: x-large;
-  padding-top: 10px;
-  border-radius: 20px;
-  padding: 25px;
   box-sizing: border-box;
+  border-radius: 6px;
 }

@@ -1,0 +1,61 @@
+/* regla anterior*/
+
+/* .contents{
+    max-width: 26%;
+    width: 200px;
+    text-wrap: wrap;
+    background-color: cornflowerblue;
+    box-sizing: border-box;
+} */
+
+.contents {
+  max-width: 29%;
+  width: 200px;
+  text-wrap: wrap;
+  background-color: #d47c00;
+  box-sizing: border-box;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0px 0px 2px 1px #c5bebe59;
+  transition: background-color 0.4s ease;
+  transition: border 0.4s ease;
+}
+
+.contents:hover {
+  background-color: #854e02;
+  border-top: 2px solid #ff3131;
+  border-right: 2px solid #ff3131;
+  transform: rotate3d(0,-1, 1, 1deg);
+  cursor: pointer;
+}
+
+.contents h2 {
+  position: relative;
+  left: 0;
+  bottom: -192px;
+  background-color: rgba(28, 26, 27, 85%);
+  padding: 3px 0 3px 7px;
+  border-radius: 0 0 5px 5px;
+}
+
+.contents img {
+  /* max-width: 100%;
+    width: 192px;
+    height: 192px;
+    border-radius: 5px;
+    margin: 3px 0 3px 0; */
+
+  max-width: 100%;
+  width: 192px;
+  height: 210px;
+  border-radius: 5px;
+  margin: -18px 0 3px 0;
+}
+
+.contents p {
+  text-shadow: 1px 1px 0px black;
+}

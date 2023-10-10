@@ -32,12 +32,11 @@ const Home = () => {
 
   return (
     <div className={styles.contents}>
-      <div className={styles.header}>
-        <h1>F1 Drivers</h1>
-      </div>
-
       <div className={styles.contentsBody}>
         <div className={styles.sideOptions}>
+          <div className={styles.header}>
+            <h1>F1 Drivers</h1>
+          </div>
           <h1>Options</h1>
         </div>
 
