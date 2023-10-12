@@ -110,7 +110,7 @@ p {
   }
 }
 
-.welcome button {
+.welcome .button {
   visibility: hidden;
   margin-top: 50px;
   padding: 0.2em;
@@ -118,9 +118,16 @@ p {
   border: none;
   box-shadow: 0px 0px 4px 0px #ffffff40;
   cursor: pointer;
-  background-color: var(--color-primary);
+  
+  background-color: #ff9c16;
   animation: boton 1s 9s forwards;
+  transition: background-color 1s;
 }
+
+.welcome .button:hover{
+  background-color: #9c6313;
+}
+
 
 @keyframes boton {
   0% {
@@ -141,7 +148,7 @@ p {
     font-size: 0.8em;
     height: 120px;
   }
-  .welcome button {
+  .welcome .button {
     margin-top: 30px;
     padding: 0.15em;
   }
@@ -197,7 +204,7 @@ p {
     animation: mensajes 5s forwards;
     height: 100px;
   }
-  .welcome button {
+  .welcome .button {
     margin-top: 30px;
     padding: 0.15em;
     animation: boton 2s 8s forwards;

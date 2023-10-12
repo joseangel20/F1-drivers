@@ -1,4 +1,5 @@
 import styles from "./welcome.module.css";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
@@ -7,7 +8,9 @@ const Welcome = () => {
         <h1>BIENVENIDO</h1>
         <p className={styles.first}>a drivers</p>
         <p className={styles.second}>Formula 1</p>
-        <button>Entrar</button>
+        <Link to="/home">
+          <button className={styles.button}>Entrar</button>
+        </Link>
       </div>
     </div>
   );

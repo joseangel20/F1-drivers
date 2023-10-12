@@ -4,7 +4,7 @@
   --font: 1em;
 }
 
-.contents{
+.contents {
   display: flex;
   flex-direction: column;
   background-color: black;
@@ -19,9 +19,9 @@
   background-position: center center;
   font-size: var(--font);
   box-sizing: border-box;
-  height: auto;
+  height: 1020px;
 }
-.header{
+.header {
   /* text-align: center; */
   margin-top: 5px;
   font-size: 2em;
@@ -36,7 +36,6 @@
 }
 
 .sideOptions {
-  width: 20%;
   background-color: rgb(212, 124, 0);
   border-radius: 15px;
   padding: 25px;
@@ -44,6 +43,19 @@
   box-sizing: border-box;
   position: fixed;
   box-shadow: inset 0px 0px 10px -3px white;
+  animation: ancho 1s forwards;
+  font-size: 0em;
+}
+
+@keyframes ancho {
+  0% {
+    width: 0;
+    font-size: 0em;
+  }
+  100% {
+    width: 18%;
+    font-size: var(--font);
+  }
 }
 
 .sideCards {

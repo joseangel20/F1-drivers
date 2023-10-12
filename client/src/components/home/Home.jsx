@@ -1,7 +1,7 @@
-import styles from "./home.module.css";
 import { setDriversAction } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import styles from "./home.module.css";
 import Card from "../card/Card";
 
 const Home = () => {
@@ -10,8 +10,8 @@ const Home = () => {
 
   useEffect(() => {
     async function axiosData() {
-      const dispatchData = await setDriversAction();
-      dispatchData(dispatch);
+      const driversDispatch = await setDriversAction();
+      driversDispatch(dispatch);
     }
     axiosData();
   }, [dispatch]);
@@ -37,10 +37,13 @@ const Home = () => {
           <div className={styles.header}>
             <h1>F1 Drivers</h1>
           </div>
+
           <h1>Options</h1>
         </div>
 
-        <div className={styles.sideCards}>{ElementCard}</div>
+        <div className={styles.sideCards}>
+          {ElementCard ? ElementCard : "holamundo"}
+        </div>
       </div>
     </div>
   );

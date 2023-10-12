@@ -1,14 +1,19 @@
 /* eslint-disable react/prop-types */
-import styles from "./card.module.css"
+import { useNavigate } from "react-router-dom";
+import styles from "./card.module.css";
 
-function Card({name, image, teams }) {
-  // if (teams && teams.length > 14) teams = teams.substring(0,18) + " ...";
-  // else teams;
+function Card({ id, name, image, teams }) {
+
+  const navigate = useNavigate();
+
+  const handlerDetail = () => {
+    navigate(`/detail/${id}`);
+  };
 
   return (
-    <div className={styles.contents}>
+    <div className={styles.contents} onClick={handlerDetail}>
       <h2>{name}</h2>
-      <img src={image}/>
+      <img src={image} />
       <p>{teams}</p>
     </div>
   );
