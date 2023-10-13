@@ -1,22 +1,18 @@
-import { setDriversAction } from "../../redux/actions";
+import { setDriversAction, setDriverNamesAction } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import styles from "./home.module.css";
 import Card from "../card/Card";
+import SearchBar from "../Search/SearchBar";
+import Filter from "../filter/Filter";
 
-const Home = () => {
-  const allDrivers = useSelector((state) => state.allDrivers);
-  const dispatch = useDispatch();
+async function axiosData(dispatch, action, value) {
+  const driversDispatch = await action(value);
+  driversDispatch(dispatch);
+}
 
-  useEffect(() => {
-    async function axiosData() {
-      const driversDispatch = await setDriversAction();
-      driversDispatch(dispatch);
-    }
-    axiosData();
-  }, [dispatch]);
-
-  const ElementCard = allDrivers.map(({ id, name, image, teams }, index) => {
+const mapCardDrivers = (allDrivers) => {
+  return allDrivers.map(({ id, name, image, teams }, index) => {
     if (!image.startsWith("https")) image = "data:image/jpeg;base64," + image;
     if (index < 9)
       return (
@@ -29,21 +25,31 @@ const Home = () => {
         />
       );
   });
+};
 
+const Home = () => {
+  const allDrivers = useSelector((state) => state.allDrivers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (allDrivers.length == 0) axiosData(dispatch, setDriversAction);
+  }, [dispatch]);
+
+  const searchHandler = (e) => {
+    const name = e.target.value;
+    axiosData(dispatch, setDriverNamesAction, name);
+  };
+
+  const ElementCard = mapCardDrivers(allDrivers);
   return (
     <div className={styles.contents}>
       <div className={styles.contentsBody}>
         <div className={styles.sideOptions}>
-          <div className={styles.header}>
-            <h1>F1 Drivers</h1>
-          </div>
-
-          <h1>Options</h1>
+          <SearchBar searchHandler={searchHandler} dispatch={dispatch} />
+          <Filter />
         </div>
 
-        <div className={styles.sideCards}>
-          {ElementCard ? ElementCard : "holamundo"}
-        </div>
+        <div className={styles.sideCards}>{ElementCard}</div>
       </div>
     </div>
   );
