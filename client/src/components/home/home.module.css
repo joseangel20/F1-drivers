@@ -57,7 +57,7 @@
   }
 }
 
-.sideCards {
+/* .sideCards {
   margin-left: 30%;
   display: flex;
   flex-direction: row;
@@ -67,4 +67,4 @@
   justify-content: space-evenly;
   box-sizing: border-box;
   border-radius: 6px;
-}
+} */

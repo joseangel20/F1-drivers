@@ -1,0 +1,12 @@
+
+.sideCards {
+  margin-left: 30%;
+  display: flex;
+  flex-direction: row;
+  max-width: 59%;
+  width: 650px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  border-radius: 6px;
+}

@@ -15,13 +15,12 @@ const setDriverNamesAction = async (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios(`/drivers/name?name=${name}`);
-      
+
       return dispatch({
         type: SET_DRIVERS,
         payload: data,
       });
     } catch ({ response }) {
-      // console.log(response.data.error);
       dispatch(clearDriversAction());
     }
   };

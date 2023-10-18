@@ -22,17 +22,8 @@ const Detail = () => {
     };
   }, [id, dispatch]);
 
-  if (!driver.name)
-    return (
-      <div className={styles.contentsDetail}>
-        <div className={styles.contents}>
-          <h1 className={styles.notFound}>No hay conductor con id: {id}</h1>
-        </div>
-      </div>
-    );
-    
-  if (driver.image !== undefined) {
-    image = driver.image
+  if (driver?.image !== undefined) {
+    image = driver.image;
     if (!driver.image.startsWith("https"))
       image = "data:image/jpeg;base64," + driver.image;
   }

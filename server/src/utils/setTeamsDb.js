@@ -7,6 +7,7 @@ const setTeamsDb = async (axios) => {
   const teamsDb = await Team.findAll();
   if (teamsDb.length != 0) return;
   
+  //estrucura Set
   const teams = new Set();
   
   //consulta a la api de drivers
@@ -15,6 +16,7 @@ const setTeamsDb = async (axios) => {
       if (driver.teams !== undefined) {
         if (driver.teams.includes(",")) {
           driver.teams.split(",").forEach((team) => {
+            //se agregan los teams en el set para no tener datos duplicados
             teams.add(team.trim());
           });
         } else {

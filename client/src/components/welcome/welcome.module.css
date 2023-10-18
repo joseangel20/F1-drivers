@@ -58,8 +58,8 @@
   }
 }
 
-.welcome h1,
-p {
+.welcome .text,
+.first, .second {
   text-shadow: rgb(255 255 255 / 70%) 0em 0em 1em;
 }
 

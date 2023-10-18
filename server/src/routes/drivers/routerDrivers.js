@@ -6,6 +6,7 @@ const {
 } = require("../../controllers/controllerDrivers");
 const validatorCampos = require("../../utils/validateNewDriver");
 const getDriversForClient = require("../../utils/detructuringDriversForClient");
+const errorMessaage = "El conductor de coche no se encuentra";
 
 const createDriver = async (req, res) => {
   const { id, name, lastName, description, image, nationality, dob, teams } =
@@ -42,25 +43,35 @@ const createDriver = async (req, res) => {
 
 const getDriversNames = async (req, res) => {
   const query = req.query;
+  // try {
+  //   const drivers = await getDriversNamesController(query);
+  //   const driversForClient = getDriversForClient(drivers);
+  //   res.status(200).send(driversForClient);
+  // } catch (error) {
+  //   res.status(400).send({ error: error.message });
+  // }
+
   try {
     const drivers = await getDriversNamesController(query);
     const driversForClient = getDriversForClient(drivers);
+    console.log(driversForClient);
     res.status(200).send(driversForClient);
   } catch (error) {
-    res.status(400).send({ error: error.message });
+    res.status(400).send({error:errorMessaage});
   }
 };
 
 const getDriverId = async (req, res) => {
   const { idDriver } = req.params;
   let driver;
+  
   try {
     driver = await getDriverIdController(idDriver);
 
     const driversForClient = getDriversForClient(driver);
     res.status(200).send(driversForClient);
   } catch (error) {
-    res.status(404).send({ error: error.message });
+    res.status(404).send({error:errorMessaage});
   }
 };
 
@@ -70,7 +81,7 @@ const getDrivers = async (req, res) => {
     const driversForClient = getDriversForClient(drivers);
     res.status(200).send(driversForClient);
   } catch (error) {
-    res.status(404).send({ error: error.message });
+    res.status(404).send({ error: errorMessaage });
   }
 };
 

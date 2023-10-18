@@ -1,20 +1,11 @@
 const fs = require("fs");
 
 const destructuringDriversForClient = (driver) => {
-  console.log;
-  const {
-    id,
-    name,
-    lastName,
-    nationality,
-    image,
-    description,
-    dob,
-    Teams,
-    teams,
-  } = driver;
+  const { id, name, lastName, nationality, image, description, dob, Teams } =
+    driver;
 
-  const bodyObj = {
+  // devuelvo un objeto común para cada caso sea de la api o dataBase
+  const bodyResponse = {
     id,
     name,
     nationality,
@@ -23,25 +14,28 @@ const destructuringDriversForClient = (driver) => {
     description,
     dob,
   };
-  return { bodyObj, Teams };
+  return { bodyResponse, Teams };
 };
 
 const getDriversForClient = (drivers) => {
   return drivers.map((driver) => {
-    const { bodyObj, Teams } = destructuringDriversForClient(driver);
-    if (typeof bodyObj.name !== "string") {
-      bodyObj.name = driver.name.forename;
-      bodyObj.lastName = driver.name.surname;
-      bodyObj.image = driver.image.url;
-      bodyObj.teams = driver.teams;
+    const { bodyResponse, Teams } = destructuringDriversForClient(driver);
+    if (typeof bodyResponse.name !== "string") {
+      bodyResponse.name = driver.name.forename;
+      bodyResponse.lastName = driver.name.surname;
+      bodyResponse.image = driver.image.url;
+      // agregando un espacio a los teams que no tienen para no romper la ui
+      if (driver.teams) bodyResponse.teams = driver.teams.split(",").join(", ");
     } else {
-      const date = JSON.stringify(bodyObj.dob).substring(1, 11);
-      bodyObj.dob = date;
+      //Parseo el objeto date en un objecto json para obtener solo la fecha
+      const date = JSON.stringify(bodyResponse.dob).substring(1, 11);
+      bodyResponse.dob = date;
+
       let teamsDbTeams = Teams.map((team) => {
         return team.name;
       });
 
-      bodyObj.teams = teamsDbTeams.join(", ");
+      bodyResponse.teams = teamsDbTeams.join(", ");
     }
 
     // Lee la imagen desde el sistema de archivos
@@ -49,8 +43,8 @@ const getDriversForClient = (drivers) => {
     // Convierte la imagen en base64
     const base64Image = imageBuffer.toString("base64");
 
-    if (!bodyObj.image) bodyObj.image = base64Image;
-    return bodyObj;
+    if (!bodyResponse.image) bodyResponse.image = base64Image;
+    return bodyResponse;
   });
 };
 
