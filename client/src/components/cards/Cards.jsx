@@ -5,7 +5,8 @@ import Card from "../card/Card";
 const mapCardDrivers = (allDrivers) => {
   return allDrivers.map(({ id, name, image, teams }, index) => {
     if (!image.startsWith("https")) image = "data:image/jpeg;base64," + image;
-    if (index < 9)
+
+    if (index < 9) {
       return (
         <Card
           key={id + "-" + index}
@@ -15,6 +16,7 @@ const mapCardDrivers = (allDrivers) => {
           teams={teams}
         />
       );
+    }
   });
 };
 

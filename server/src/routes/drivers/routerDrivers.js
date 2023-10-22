@@ -43,21 +43,12 @@ const createDriver = async (req, res) => {
 
 const getDriversNames = async (req, res) => {
   const query = req.query;
-  // try {
-  //   const drivers = await getDriversNamesController(query);
-  //   const driversForClient = getDriversForClient(drivers);
-  //   res.status(200).send(driversForClient);
-  // } catch (error) {
-  //   res.status(400).send({ error: error.message });
-  // }
-
   try {
     const drivers = await getDriversNamesController(query);
     const driversForClient = getDriversForClient(drivers);
-    console.log(driversForClient);
     res.status(200).send(driversForClient);
   } catch (error) {
-    res.status(400).send({error:errorMessaage});
+    res.status(400).send({ error: error.message });
   }
 };
 

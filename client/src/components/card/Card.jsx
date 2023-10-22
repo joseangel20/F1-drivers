@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./card.module.css";
 
 function Card({ id, name, image, teams }) {
-
   const navigate = useNavigate();
 
   const handlerDetail = () => {

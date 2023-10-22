@@ -2,6 +2,7 @@ import styles from "./welcome.module.css";
 import { Link } from "react-router-dom";
 
 const Welcome = () => {
+ 
   return (
     <div className={styles.welcome}>
       <div className={styles.mensaje}>

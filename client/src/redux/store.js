@@ -1,8 +1,14 @@
 import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
+import { combineReducers } from "redux";
 import thank from "redux-thunk";
-import driversReducer from "./reducerDrivers";
+import driversReducer from "./driversReducer";
+import teamsReducer from "./teamsReducer";
 
-const store = createStore(driversReducer, composeWithDevTools(applyMiddleware(thank)));
+const rootReducer = combineReducers({ driversReducer, teamsReducer });
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thank))
+  );
 
 export default store;

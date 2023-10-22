@@ -21,7 +21,7 @@
   border-top: 2px solid #ff3131;
   border-right: 2px solid #ff3131;
   cursor: pointer;
-  animation: rotacion 1s;
+  animation: rotacion .5s forwards;
 }
 
 @keyframes rotacion {
@@ -29,7 +29,7 @@
     transform: rotate3d(0, -1, 1, 0deg);
   }
   100% {
-    transform: rotate3d(0, -1, 1, 1deg);
+    transform: rotate3d(0, -1, 1, 2deg);
   }
 }
 

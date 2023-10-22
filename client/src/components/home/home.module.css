@@ -19,7 +19,7 @@
   background-position: center center;
   font-size: var(--font);
   box-sizing: border-box;
-  height: 1020px;
+  min-height: 1020px;
 }
 .header {
   /* text-align: center; */

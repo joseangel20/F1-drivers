@@ -2,21 +2,21 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setDriverAction, cleanDriverAction } from "../../redux/actions";
+import { getDriverAction, cleanDriverAction } from "../../redux/actions";
 import styles from "./detail.module.css";
 import { Link } from "react-router-dom";
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const driver = useSelector((state) => state.driver);
+  const driver = useSelector((state) => state.driversReducer.driver);
   const { id } = useParams();
   let image = "";
 
   useEffect(() => {
-    setDriverAction(id).then((driverDispatch) => {
+    getDriverAction(id).then((driverDispatch) => {
       driverDispatch(dispatch);
     });
-
+    
     return () => {
       dispatch(cleanDriverAction());
     };
@@ -32,16 +32,18 @@ const Detail = () => {
     <div className={styles.contentsDetail}>
       <div className={styles.contents}>
         <div className={styles.sideImageName}>
-          <img src={image} alt="conductor" />
-          <div>
+          <div className={styles.imagen}>
+            <img src={image} alt="conductor" />
+          </div>
+          <div className={styles.bordeDetail}>
             <h1>{id}</h1>
-            <h2>{` ${driver.lastName} ${driver.nationality}`}</h2>
+            <h2>{`${driver.name} ${driver.lastName}`}</h2>
           </div>
           <Link to="/home">
             <button className={styles.button}>Home</button>
           </Link>
         </div>
-        <div className={styles.sideDetail}>
+        <div className={styles.sideDetail + " " + styles.bordeDetail}>
           <p>
             <span>Nacionalidad:</span> {driver.nationality}
           </p>
@@ -51,9 +53,11 @@ const Detail = () => {
           <p>
             <span>Escuderías:</span> {driver.teams}
           </p>
-          <p>
-            <span>Descripción:</span> {driver.description}
-          </p>
+          {driver.description && (
+            <p>
+              <span>Descripción:</span> {driver.description}
+            </p>
+          )}
         </div>
       </div>
     </div>
